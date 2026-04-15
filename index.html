@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CV Visual - Carlos Dionisio Guia Flores</title>
+    <style>
+      :root {
+        --bg1: #0b1220;
+        --bg2: #0f172a;
+        --bg3: #172554;
+        --card: rgba(17, 24, 39, 0.92);
+        --card-soft: rgba(255, 255, 255, 0.03);
+        --text: #e5e7eb;
+        --muted: #cbd5e1;
+        --accent: #38bdf8;
+        --accent-soft: rgba(56, 189, 248, 0.15);
+        --green: #22c55e;
+        --border: rgba(255, 255, 255, 0.08);
+        --shadow: 0 18px 45px rgba(0, 0, 0, 0.28);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background:
+          radial-gradient(
+            circle at top left,
+            rgba(56, 189, 248, 0.08),
+            transparent 30%
+          ),
+          linear-gradient(135deg, var(--bg1), var(--bg2), var(--bg3));
+        color: var(--text);
+        line-height: 1.65;
+      }
+
+      a {
+        color: var(--accent);
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      .container {
+        max-width: 1120px;
+        margin: 36px auto;
+        padding: 22px;
+      }
+
+      .hero {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 24px;
+        padding: 34px;
+        box-shadow: var(--shadow);
+        margin-bottom: 24px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero::after {
+        content: "";
+        position: absolute;
+        top: -60px;
+        right: -60px;
+        width: 180px;
+        height: 180px;
+        background: radial-gradient(
+          circle,
+          rgba(56, 189, 248, 0.12),
+          transparent 70%
+        );
+        pointer-events: none;
+      }
+
+      .hero h1 {
+        margin: 0 0 6px;
+        font-size: 2.35rem;
+        color: #fff;
+        letter-spacing: 0.2px;
+      }
+
+      .hero .subtitle {
+        color: var(--muted);
+        margin-bottom: 18px;
+        font-size: 1.08rem;
+      }
+
+      .personal-data {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(260px, 1fr));
+        gap: 12px;
+        margin-top: 14px;
+      }
+
+      .data-box {
+        background: var(--card-soft);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 14px;
+        padding: 14px 16px;
+        color: var(--muted);
+        transition:
+          transform 0.15s ease,
+          border-color 0.15s ease;
+      }
+
+      .data-box:hover {
+        transform: translateY(-1px);
+        border-color: rgba(56, 189, 248, 0.24);
+      }
+
+      .data-box strong {
+        display: block;
+        color: #fff;
+        margin-bottom: 4px;
+        font-size: 0.95rem;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: 1.35fr 0.95fr;
+        gap: 24px;
+      }
+
+      .card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 22px;
+        padding: 24px;
+        box-shadow: var(--shadow);
+      }
+
+      .card h2 {
+        margin: 0 0 16px;
+        color: #fff;
+        font-size: 1.23rem;
+        border-left: 4px solid var(--accent);
+        padding-left: 10px;
+      }
+
+      .card h3 {
+        margin: 18px 0 8px;
+        color: #93c5fd;
+        font-size: 1rem;
+      }
+
+      .summary {
+        text-align: justify;
+        color: var(--text);
+        margin: 0;
+      }
+
+      .list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .list li {
+        background: var(--card-soft);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        padding: 12px 14px;
+        border-radius: 14px;
+        margin-bottom: 10px;
+      }
+
+      .pill-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .pill {
+        background: rgba(34, 197, 94, 0.12);
+        color: #dcfce7;
+        border: 1px solid rgba(34, 197, 94, 0.22);
+        padding: 10px 14px;
+        border-radius: 999px;
+        font-size: 0.95rem;
+      }
+
+      .mini-card {
+        background: var(--card-soft);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 18px;
+        padding: 16px;
+        margin-bottom: 14px;
+      }
+
+      .mini-card strong {
+        color: #fff;
+        display: block;
+        margin-bottom: 5px;
+      }
+
+      .highlight {
+        color: #ffffff;
+        font-weight: bold;
+      }
+
+      .note {
+        margin-top: 18px;
+        color: #c7d2fe;
+        font-size: 0.95rem;
+        text-align: center;
+        background: rgba(56, 189, 248, 0.08);
+        border: 1px solid rgba(56, 189, 248, 0.12);
+        border-radius: 16px;
+        padding: 14px 18px;
+      }
+
+      @media (max-width: 900px) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+
+        .personal-data {
+          grid-template-columns: 1fr;
+        }
+
+        .hero h1 {
+          font-size: 1.9rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <section class="hero">
+        <h1>Carlos Dionisio Guia Flores</h1>
+        <div class="subtitle">
+          Estudiante de Ingeniería en Tecnología de Software
+        </div>
+
+        <div class="personal-data">
+          <div class="data-box">
+            <strong>Teléfono celular</strong>
+            8611131651
+          </div>
+          <div class="data-box">
+            <strong>Correo electrónico</strong>
+            carlosguia2222@gmail.com
+          </div>
+          <div class="data-box">
+            <strong>Ubicación</strong>
+            San Nicolás de los Garza, Nuevo León, México
+          </div>
+          <div class="data-box">
+            <strong>LinkedIn</strong>
+            <a
+              href="https://www.linkedin.com/in/carlos-guia-b174092a7"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Ver perfil de LinkedIn
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="grid">
+        <div class="card">
+          <h2>Resumen profesional</h2>
+          <p class="summary">
+            Estudiante de Ingeniería en Tecnología de Software, con
+            conocimientos en análisis de datos, manejo de Microsoft Excel,
+            limpieza y organización de bases de datos, así como elaboración de
+            reportes orientados a la toma de decisiones. Actualmente en
+            formación complementaria mediante diplomados y certificaciones en
+            análisis de datos y experiencia de usuario, con conocimientos
+            básicos en Power BI, Git, Scrum, Figma, HTML, CSS, Bootstrap y R.
+            Cuenta con nivel de inglés B2 y formación en Centro de Idiomas, con
+            capacidad para comprender documentación técnica y desenvolverse en
+            entornos de aprendizaje y trabajo colaborativo. Además, cuenta con
+            experiencia como
+            <span class="highlight">editor de video freelance</span>, con
+            conocimientos
+            <span class="highlight"
+              >intermedios a avanzados en Adobe Premiere Pro y After
+              Effects</span
+            >, así como conocimientos
+            <span class="highlight">básicos en Photoshop e Illustrator</span>.
+          </p>
+        </div>
+
+        <div class="card">
+          <h2>Idiomas y formación</h2>
+          <div class="mini-card">
+            <strong>Idiomas</strong>
+            Español: Nativo<br />
+            Inglés: B2
+          </div>
+          <div class="mini-card">
+            <strong>Formación académica</strong>
+            Estudiante de Ingeniería en Tecnología de Software — 7mo semestre<br />
+            Facultad de Ingeniería Mecánica y Eléctrica (FIME), UANL<br /><br />
+            Estudiante de Centro de Idiomas — 7mo semestre<br /><br />
+            Técnico Laboratorista Clínico<br />
+            CBTis 020
+          </div>
+          <div class="mini-card">
+            <strong>Formación complementaria</strong>
+            Diplomado en Análisis y Visualización de Datos (En curso)<br />
+            Diplomado de Análisis de Datos de Google (En curso, avance en 2
+            módulos)
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Conocimientos clave y técnicos</h2>
+          <h3>Área</h3>
+          <div class="pill-list">
+            <span class="pill">Ingeniería de Software</span>
+            <span class="pill">Análisis de Datos</span>
+            <span class="pill">Visualización de Información</span>
+            <span class="pill">UX / UI</span>
+            <span class="pill">Desarrollo Web Básico</span>
+            <span class="pill">Edición de Video</span>
+          </div>
+
+          <h3>Técnicos</h3>
+          <ul class="list">
+            <li>Microsoft Excel (Intermedio)</li>
+            <li>Limpieza y organización de datos</li>
+            <li>Elaboración de reportes</li>
+            <li>Power BI básico</li>
+            <li>Git básico</li>
+            <li>Scrum básico</li>
+            <li>Figma básico</li>
+            <li>HTML básico</li>
+            <li>CSS básico</li>
+            <li>Bootstrap básico</li>
+            <li>R básico</li>
+            <li>Adobe Premiere Pro (Intermedio - Avanzado)</li>
+            <li>Adobe After Effects (Intermedio - Avanzado)</li>
+            <li>Adobe Photoshop (Básico)</li>
+            <li>Adobe Illustrator (Básico)</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h2>Experiencia y proyectos</h2>
+          <ul class="list">
+            <li>
+              Editor de video freelance para contenido digital y piezas
+              visuales.
+            </li>
+            <li>
+              Diseño de interfaz de usuario en Figma para un centro
+              odontológico.
+            </li>
+            <li>Desarrollo de página web estática tipo landing page.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h2>Certificaciones</h2>
+          <ul class="list">
+            <li>Fundamentos de análisis de datos — Google / Coursera</li>
+            <li>Toma de decisiones basadas en datos — Google / Coursera</li>
+            <li>
+              Fundamentos de experiencia de usuario (UX) — Google / Coursera
+            </li>
+            <li>Diseño UX: empatizar, definir e idear — Google / Coursera</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h2>Habilidades blandas</h2>
+          <ul class="list">
+            <li>Aprendizaje rápido de nuevas herramientas y tecnologías.</li>
+            <li>Trabajo en equipo con enfoque colaborativo.</li>
+            <li>Adaptabilidad a cambios y nuevos entornos de trabajo.</li>
+            <li>
+              Capacidad para integrarme a distintas áreas según las necesidades
+              del proyecto.
+            </li>
+            <li>
+              Organización y colaboración en proyectos bajo metodologías ágiles
+              como Scrum.
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <div class="note">
+        En formación continua en software, análisis de datos, edición
+        audiovisual y herramientas digitales aplicadas.
+      </div>
+    </div>
+  </body>
+</html>
