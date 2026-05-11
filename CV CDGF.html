@@ -1,0 +1,443 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Visual CV - Carlos Dionisio Guia Flores</title>
+    <style>
+      :root {
+        --bg1: #0b1220;
+        --bg2: #0f172a;
+        --bg3: #172554;
+        --card: rgba(17, 24, 39, 0.92);
+        --card-soft: rgba(255, 255, 255, 0.03);
+        --text: #e5e7eb;
+        --muted: #cbd5e1;
+        --accent: #38bdf8;
+        --accent-soft: rgba(56, 189, 248, 0.15);
+        --green: #22c55e;
+        --border: rgba(255, 255, 255, 0.08);
+        --shadow: 0 18px 45px rgba(0, 0, 0, 0.28);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background:
+          radial-gradient(
+            circle at top left,
+            rgba(56, 189, 248, 0.08),
+            transparent 30%
+          ),
+          linear-gradient(135deg, var(--bg1), var(--bg2), var(--bg3));
+        color: var(--text);
+        line-height: 1.65;
+      }
+
+      a {
+        color: var(--accent);
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      .container {
+        max-width: 1120px;
+        margin: 36px auto;
+        padding: 22px;
+      }
+
+      .hero {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 24px;
+        padding: 34px;
+        box-shadow: var(--shadow);
+        margin-bottom: 24px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero::after {
+        content: "";
+        position: absolute;
+        top: -60px;
+        right: -60px;
+        width: 180px;
+        height: 180px;
+        background: radial-gradient(
+          circle,
+          rgba(56, 189, 248, 0.12),
+          transparent 70%
+        );
+        pointer-events: none;
+      }
+
+      .hero h1 {
+        margin: 0 0 6px;
+        font-size: 2.35rem;
+        color: #fff;
+        letter-spacing: 0.2px;
+      }
+
+      .hero .subtitle {
+        color: var(--muted);
+        margin-bottom: 18px;
+        font-size: 1.08rem;
+      }
+
+      .personal-data {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(260px, 1fr));
+        gap: 12px;
+        margin-top: 14px;
+      }
+
+      .data-box {
+        background: var(--card-soft);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 14px;
+        padding: 14px 16px;
+        color: var(--muted);
+        transition:
+          transform 0.15s ease,
+          border-color 0.15s ease;
+      }
+
+      .data-box:hover {
+        transform: translateY(-1px);
+        border-color: rgba(56, 189, 248, 0.24);
+      }
+
+      .data-box strong {
+        display: block;
+        color: #fff;
+        margin-bottom: 4px;
+        font-size: 0.95rem;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: 1.35fr 0.95fr;
+        gap: 24px;
+      }
+
+      .card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 22px;
+        padding: 24px;
+        box-shadow: var(--shadow);
+      }
+
+      .card h2 {
+        margin: 0 0 16px;
+        color: #fff;
+        font-size: 1.23rem;
+        border-left: 4px solid var(--accent);
+        padding-left: 10px;
+      }
+
+      .card h3 {
+        margin: 18px 0 8px;
+        color: #93c5fd;
+        font-size: 1rem;
+      }
+
+      .summary {
+        text-align: justify;
+        color: var(--text);
+        margin: 0;
+      }
+
+      .list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .list li {
+        background: var(--card-soft);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        padding: 12px 14px;
+        border-radius: 14px;
+        margin-bottom: 10px;
+      }
+
+      .pill-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .pill {
+        background: rgba(34, 197, 94, 0.12);
+        color: #dcfce7;
+        border: 1px solid rgba(34, 197, 94, 0.22);
+        padding: 10px 14px;
+        border-radius: 999px;
+        font-size: 0.95rem;
+      }
+
+      .mini-card {
+        background: var(--card-soft);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 18px;
+        padding: 16px;
+        margin-bottom: 14px;
+      }
+
+      .mini-card strong {
+        color: #fff;
+        display: block;
+        margin-bottom: 5px;
+      }
+
+      .highlight {
+        color: #ffffff;
+        font-weight: bold;
+      }
+
+      .note {
+        margin-top: 18px;
+        color: #c7d2fe;
+        font-size: 0.95rem;
+        text-align: center;
+        background: rgba(56, 189, 248, 0.08);
+        border: 1px solid rgba(56, 189, 248, 0.12);
+        border-radius: 16px;
+        padding: 14px 18px;
+      }
+
+      @media (max-width: 900px) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+
+        .personal-data {
+          grid-template-columns: 1fr;
+        }
+
+        .hero h1 {
+          font-size: 1.9rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <section class="hero">
+        <h1>Carlos Dionisio Guia Flores</h1>
+        <div class="subtitle">
+          Software Technology Engineering Student
+        </div>
+
+        <div class="personal-data">
+          <div class="data-box">
+            <strong>Phone</strong>
+            8611131651
+          </div>
+          <div class="data-box">
+            <strong>Email</strong>
+            carlosguia2222@gmail.com
+          </div>
+          <div class="data-box">
+            <strong>Location</strong>
+            San Nicolás de los Garza, Nuevo León, Mexico
+          </div>
+          <div class="data-box">
+            <strong>LinkedIn</strong>
+            <a
+              href="https://www.linkedin.com/in/carlos-guia-b174092a7"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              View LinkedIn Profile
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="grid">
+        <div class="card">
+          <h2>Professional Summary</h2>
+          <p class="summary">
+            Software Technology Engineering student at FIME-UANL, with interest
+            in web development, mobile development, data analysis and digital
+            solutions. I have experience in academic software projects using
+            <span class="highlight">React, React Native, Expo, Firebase,
+            Firestore, Node.js and Express</span>. I have knowledge of user
+            interface design, role-based access control, frontend-backend
+            connection, NoSQL databases, technical documentation and functional
+            testing.
+            <br /><br />
+            I also have experience as a
+            <span class="highlight">freelance video editor</span>, which has
+            helped me develop creativity, organization, attention to detail,
+            problem-solving skills and the ability to adapt content according
+            to project needs.
+          </p>
+        </div>
+
+        <div class="card">
+          <h2>Languages and Education</h2>
+
+          <div class="mini-card">
+            <strong>Languages</strong>
+            Spanish: Native<br />
+            English: B2
+          </div>
+
+          <div class="mini-card">
+            <strong>Academic Background</strong>
+            Software Technology Engineering Student — 7th Semester<br />
+            Faculty of Mechanical and Electrical Engineering (FIME), UANL<br /><br />
+
+            Language Center Student — 7th Semester<br />
+            UANL Language Center<br /><br />
+
+            Clinical Laboratory Technician<br />
+            CBTis 020
+          </div>
+
+          <div class="mini-card">
+            <strong>Additional Education</strong>
+            Diploma in Data Analysis and Visualization<br />
+            Google Data Analytics Program — Coursera
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Key and Technical Knowledge</h2>
+
+          <h3>Areas</h3>
+          <div class="pill-list">
+            <span class="pill">Software Engineering</span>
+            <span class="pill">Web Development</span>
+            <span class="pill">Mobile Development</span>
+            <span class="pill">Data Analysis</span>
+            <span class="pill">Information Visualization</span>
+            <span class="pill">UX / UI</span>
+            <span class="pill">Video Editing</span>
+          </div>
+
+          <h3>Technical Skills</h3>
+          <ul class="list">
+            <li>React Native</li>
+            <li>React</li>
+            <li>Expo</li>
+            <li>Expo Router</li>
+            <li>JavaScript</li>
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>Bootstrap basic</li>
+            <li>Node.js</li>
+            <li>Express</li>
+            <li>Firebase Authentication</li>
+            <li>Cloud Firestore</li>
+            <li>Firebase Security Rules</li>
+            <li>REST APIs</li>
+            <li>NoSQL databases</li>
+            <li>React Router</li>
+            <li>Git and GitHub</li>
+            <li>Microsoft Excel intermediate</li>
+            <li>Power BI basic</li>
+            <li>Scrum basic</li>
+            <li>Figma basic</li>
+            <li>R basic</li>
+            <li>Adobe Premiere Pro intermediate - advanced</li>
+            <li>Adobe After Effects intermediate - advanced</li>
+            <li>Adobe Photoshop basic</li>
+            <li>Adobe Illustrator basic</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h2>Experience and Academic Projects</h2>
+
+          <div class="mini-card">
+            <strong>Freelance Video Editor</strong>
+            Edited digital content and visual pieces for independent projects.
+            Worked on video assembly, organization of audiovisual material,
+            basic visual correction and content adaptation according to project
+            requirements.
+            <br /><br />
+            <span class="highlight">Tools used:</span>
+            Adobe Premiere Pro, Adobe After Effects, Adobe Photoshop basic and
+            Adobe Illustrator basic.
+          </div>
+
+          <div class="mini-card">
+            <strong>DECIGA Link — Mobile Application</strong>
+            Academic mobile application developed with React Native, Expo,
+            Expo Router and Firebase. The system focuses on sales management,
+            logistics, points of sale and commissions.
+            <br /><br />
+            Participated in the creation of role-based screens, user
+            authentication, protected navigation, Cloud Firestore connection,
+            security rules and access control according to the user type.
+            <br /><br />
+            <span class="highlight">Skills applied:</span>
+            React Native, Expo, Expo Router, Firebase Authentication, Cloud
+            Firestore, Firebase Security Rules, NoSQL databases, role-based
+            navigation, mobile UI design and functional testing.
+          </div>
+
+          <div class="mini-card">
+            <strong>Empaques Brisa — Web System</strong>
+            Academic web system developed with React, Node.js and Express for
+            the management of quotations, clients, history, monitoring and
+            reports.
+            <br /><br />
+            Worked on user interfaces, routes, reusable components, forms,
+            frontend-middleware connection, local testing and version control
+            with GitHub.
+            <br /><br />
+            <span class="highlight">Skills applied:</span>
+            React, JavaScript, HTML, CSS, Node.js, Express, React Router, Git,
+            GitHub, forms, routing, frontend-backend connection, middleware and
+            functional testing.
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Certifications</h2>
+          <ul class="list">
+            <li>Diploma in Data Analysis and Visualization</li>
+            <li>Foundations: Data, Data, Everywhere — Google / Coursera</li>
+            <li>Ask Questions to Make Data-Driven Decisions — Google / Coursera</li>
+            <li>Foundations of User Experience (UX) Design — Google / Coursera</li>
+            <li>UX Design: Empathize, Define, and Ideate — Google / Coursera</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h2>Soft Skills</h2>
+          <ul class="list">
+            <li>Fast learning of new tools and technologies.</li>
+            <li>Teamwork with a collaborative approach.</li>
+            <li>Adaptability to changes and new work environments.</li>
+            <li>Organization and responsibility in academic and digital projects.</li>
+            <li>Problem-solving and attention to detail.</li>
+            <li>Ability to collaborate in projects using agile methodologies such as Scrum.</li>
+          </ul>
+        </div>
+      </section>
+
+      <div class="note">
+        Continuous learning in software development, data analysis, audiovisual
+        editing and digital tools.
+      </div>
+    </div>
+  </body>
+</html>
